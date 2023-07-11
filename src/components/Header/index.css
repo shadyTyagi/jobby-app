@@ -1,0 +1,46 @@
+.nav-header {
+  background-color: #272727;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.website-logo {
+  height: 40px;
+}
+
+.nav-menu {
+  list-style-type: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: row;
+}
+
+.logout-desktop-btn {
+  color: #ffffff;
+  background-color: #6366f1;
+  border: none;
+  height: 30px;
+  width: 110px;
+  border-radius: 5px;
+  font-family: 'Roboto';
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.nav-link {
+  color: #ffffff;
+  margin: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
