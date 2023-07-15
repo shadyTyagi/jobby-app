@@ -90,7 +90,6 @@ class AllJobs extends Component {
         profileImageUrl: profile.profile_image_url,
         shortBio: profile.short_bio,
       }
-      console.log(updatedProfileData)
       this.setState({
         apiStatus: apiStatusConstants.success,
         profileData: updatedProfileData,
@@ -113,7 +112,6 @@ class AllJobs extends Component {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
-    console.log(response)
     if (response.ok === true) {
       const data = await response.json()
       console.log(data)

@@ -15,8 +15,12 @@ class LoginForm extends Component {
     this.setState({password: event.target.value})
   }
 
-  onLoginSubmit = () => {
+  onLoginSubmit = jwtToken => {
     const {history} = this.props
+
+    Cookies.set('jwt_token', jwtToken, {
+      expires: 30,
+    })
     history.replace('/')
   }
 
@@ -39,7 +43,7 @@ class LoginForm extends Component {
     console.log(data)
     console.log(response)
     if (response.ok === true) {
-      this.onLoginSubmit()
+      this.onLoginSubmit(data.jwt_token)
     } else {
       this.onSubmitFailure(data.error_msg)
     }
