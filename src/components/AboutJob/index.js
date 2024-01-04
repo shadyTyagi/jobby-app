@@ -27,20 +27,25 @@ class AboutJob extends Component {
   }
 
   getJobData = async () => {
+    const jwtToken = Cookies.get('jwt_token')
     const {match} = this.props
     const {params} = match
     const {id} = params
+
     this.setState({apiStatus: apiStatusConstants.inProgress})
-    const jwtToken = Cookies.get('jwt_token')
+
     const jobDetailsApiUrl = `https://apis.ccbp.in/jobs/${id}`
     const optionsJobData = {
       headers: {Authorization: `Bearer ${jwtToken}`},
       method: 'GET',
     }
+
     const responseJobData = await fetch(jobDetailsApiUrl, optionsJobData)
+    const fetchedJobData = await responseJobData.json()
     if (responseJobData.ok === true) {
-      const fetchedJobData = await responseJobData.json()
-      const updatedJobDetailsData = [fetchedJobData.job_details].map(
+      const jobDetailsData = [fetchedJobData.job_details]
+      console.log(jobDetailsData)
+      const updatedJobDetailsData = jobDetailsData.job_details.map(
         eachItem => ({
           companyLogoUrl: eachItem.company_logo_url,
           companyWebsiteUrl: eachItem.company_website_url,
@@ -73,6 +78,8 @@ class AboutJob extends Component {
           title: eachItem.title,
         }),
       )
+      console.log(updatedSimilarJobDetails)
+
       this.setState({
         jobDataDetails: updatedJobDetailsData,
         similarJobsData: updatedSimilarJobDetails,
@@ -87,7 +94,8 @@ class AboutJob extends Component {
 
   renderJobDetailsSuccessView = () => {
     const {jobDataDetails, similarJobsData} = this.state
-    if (jobDataDetails.length >= 1) {
+    console.log(jobDataDetails)
+    if (jobDataDetails.length > 1) {
       const {
         companyLogoUrl,
         companyWebsiteUrl,

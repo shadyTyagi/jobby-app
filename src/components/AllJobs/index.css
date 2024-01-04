@@ -27,7 +27,8 @@
 
 .profile-container {
   background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
-  width: 100%;
+  width: 220px;
+  height: 195px;
   padding: 25px;
   border-radius: 25px;
 }

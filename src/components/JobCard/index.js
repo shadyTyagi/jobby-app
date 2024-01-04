@@ -21,29 +21,33 @@ const JobCard = props => {
     <>
       <Link to={`/jobs/${id}`} className="link">
         <li className="job-item">
-          <div className="job-logo-title-card">
-            <img
-              src={companyLogoUrl}
-              className="company-logo"
-              alt="job details company logo"
-            />
-            <div className="job-rating-container">
-              <h1 className="title">{title}</h1>
-              <div className="star-rating-container">
-                <AiFillStar className="star-icon" />
-                <p className="rating">{rating}</p>
+          <div className="first-part-container">
+            <div className="job-logo-title-card">
+              <img
+                src={companyLogoUrl}
+                className="company-logo"
+                alt="job details company logo"
+              />
+              <div className="job-rating-container">
+                <h1 className="title">{title}</h1>
+                <div className="star-rating-container">
+                  <AiFillStar className="star-icon" />
+                  <p className="rating">{rating}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="location-type-package-card">
-            <div className="location-type">
-              <div className="location-icon-location-container">
-                <MdLocationOn className="location-icon" />
-                <p className="location">{location}</p>
+            <div className="location-type-package-card">
+              <div className="location-type">
+                <div className="location-icon-location-container">
+                  <MdLocationOn className="location-icon" />
+                  <p className="location">{location}</p>
+                </div>
+                <div className="employment-type-icon-employment-type-container">
+                  <p className="type">{employmentType}</p>
+                </div>
               </div>
-              <p className="type">{employmentType}</p>
+              <p className="package">{packagePerAnnum}</p>
             </div>
-            <h1 className="package">{packagePerAnnum}</h1>
           </div>
           <hr className="item-hr-line" />
           <div className="about-section">
