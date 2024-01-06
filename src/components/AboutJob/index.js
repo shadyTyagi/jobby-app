@@ -41,9 +41,11 @@ class AboutJob extends Component {
     }
 
     const responseJobData = await fetch(jobDetailsApiUrl, optionsJobData)
+    // console.log(responseJobData)
     const fetchedJobData = await responseJobData.json()
+    // console.log(fetchedJobData)
     if (responseJobData.ok === true) {
-      const jobDetailsData = [fetchedJobData.job_details]
+      const jobDetailsData = fetchedJobData.job_details
       console.log(jobDetailsData)
       const updatedJobDetailsData = jobDetailsData.job_details.map(
         eachItem => ({
@@ -94,8 +96,8 @@ class AboutJob extends Component {
 
   renderJobDetailsSuccessView = () => {
     const {jobDataDetails, similarJobsData} = this.state
-    console.log(jobDataDetails)
-    if (jobDataDetails.length > 1) {
+    console.log(similarJobsData)
+    if (jobDataDetails.length >= 1) {
       const {
         companyLogoUrl,
         companyWebsiteUrl,
@@ -222,7 +224,7 @@ class AboutJob extends Component {
 
   renderJobDetails = () => {
     const {apiStatus} = this.state
-
+    console.log(apiStatus)
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.renderJobDetailsSuccessView()
