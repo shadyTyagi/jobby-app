@@ -47,7 +47,7 @@ class AboutJob extends Component {
     if (responseJobData.ok === true) {
       const jobDetailsData = fetchedJobData.job_details
       console.log(jobDetailsData)
-      const updatedJobDetailsData = jobDetailsData.job_details.map(
+      const updatedJobDetailsData = [fetchedJobData.job_details].map(
         eachItem => ({
           companyLogoUrl: eachItem.company_logo_url,
           companyWebsiteUrl: eachItem.company_website_url,
@@ -62,7 +62,7 @@ class AboutJob extends Component {
           packagePerAnnum: eachItem.package_per_annum,
           rating: eachItem.rating,
           skills: eachItem.skills.map(eachSkill => ({
-            imageUrl: eachSkill.image_Url,
+            imageURL: eachSkill.image_Url,
             name: eachSkill.name,
           })),
           title: eachItem.title,
@@ -97,6 +97,7 @@ class AboutJob extends Component {
   renderJobDetailsSuccessView = () => {
     const {jobDataDetails, similarJobsData} = this.state
     console.log(similarJobsData)
+    console.log(jobDataDetails)
     if (jobDataDetails.length >= 1) {
       const {
         companyLogoUrl,
@@ -161,10 +162,10 @@ class AboutJob extends Component {
                 <li className="li-job-details-container" key={eachItem.name}>
                   <img
                     className="skill-img"
-                    src={eachItem.imageUrl}
+                    src={eachItem.imageURL}
                     alt={eachItem.name}
                   />
-                  <p>{eachItem.name}</p>
+                  <p className="skill-name">{eachItem.name}</p>
                 </li>
               ))}
             </ul>
